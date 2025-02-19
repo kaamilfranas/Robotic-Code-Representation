@@ -2,6 +2,7 @@ package pl.camelsoftware.robotic_code_representation.service.impl;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.camelsoftware.robotic_code_representation.dto.ComputeCommandsListRequest;
 import pl.camelsoftware.robotic_code_representation.repository.RcrStorage;
 import pl.camelsoftware.robotic_code_representation.service.CommandService;
 import pl.camelsoftware.robotic_code_representation.service.RcrTreeService;
@@ -17,8 +18,9 @@ public class CommandsServiceImpl implements CommandService {
     private final RcrStorage rcrStorage;
 
     @Override
-    public void computeCommands(List<String> commands) {
+    public void computeCommands(ComputeCommandsListRequest computeCommandsListRequest) {
         Map<String, Integer> frequencies = new HashMap<>();
+        List<String> commands = List.of(computeCommandsListRequest.getCommands());
         commands.forEach(command ->{
             frequencies.put(command, frequencies.getOrDefault(command, 0) + 1);
         });

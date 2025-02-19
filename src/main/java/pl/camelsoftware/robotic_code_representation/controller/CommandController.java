@@ -16,6 +16,6 @@ public class CommandController {
 
     @PostMapping(path = "/commands")
     public void computeCommands(@RequestBody ComputeCommandsListRequest request) {
-        commandService.computeCommands(List.of(request.getCommands()));
+        commandService.computeCommands(request);
     }
 }
